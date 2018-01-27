@@ -6,11 +6,11 @@
     <title>$title$</title>
     <authors>coosmiin</authors>
     <owners>coosmiin</owners>
-    <projectUrl>https://github.com/coosmiin/Packages/tree/master/SecretStore</projectUrl>
+    <projectUrl>https://github.com/coosmiin/Packages/tree/master/Logging</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Initial release.</releaseNotes>
     <copyright>Copyright 2018</copyright>
-    <tags>UserSecrets Store</tags>
+    <tags>Logging</tags>
   </metadata>
 </package>
