@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Google.Apis.Gmail.v1" Version="1.42.0.1777" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\GmailApi.Client\GmailApi.Client.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="credentials.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>

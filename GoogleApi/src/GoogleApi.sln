@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29609.76
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleApi.Console", "GoogleApi.Console\GoogleApi.Console.csproj", "{A116C97A-7252-481B-BDA9-E756D577CA67}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GmailApi.Client", "GmailApi.Client\GmailApi.Client.csproj", "{6CBF3DF0-9C9B-45B8-ACF3-3AB911A529C1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A116C97A-7252-481B-BDA9-E756D577CA67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A116C97A-7252-481B-BDA9-E756D577CA67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A116C97A-7252-481B-BDA9-E756D577CA67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A116C97A-7252-481B-BDA9-E756D577CA67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CBF3DF0-9C9B-45B8-ACF3-3AB911A529C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CBF3DF0-9C9B-45B8-ACF3-3AB911A529C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CBF3DF0-9C9B-45B8-ACF3-3AB911A529C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CBF3DF0-9C9B-45B8-ACF3-3AB911A529C1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AB55526F-997A-43A4-A5EF-70C442ECE2B8}
+	EndGlobalSection
+EndGlobal
