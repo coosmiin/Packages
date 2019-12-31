@@ -1,27 +1,41 @@
-﻿using Google.Apis.Auth.OAuth2;
+﻿using GmailApi.Client.Authorization;
+using GmailApi.Client.Gmail;
+using Google.Apis.Auth.OAuth2;
 using Google.Apis.Gmail.v1;
-using Google.Apis.Gmail.v1.Data;
-using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace GoogleApi.Console
 {
 	class Program
 	{
-		static void Main(string[] args)
+		static async Task Main(string[] args)
 		{
-			var credential = CreateToken();
+			var credential = CreateTokenUsingRawApi();
+			// var credential = await CreateTokenUsingCredentialProvider();
 
-			CallGmail(credential);
+			// var content = ExtractEmailContentUsingWrapperApi(credential);
 		}
 
-		private static UserCredential CreateToken()
+		private static async Task<UserCredential> CreateTokenUsingCredentialProvider()
+		{
+			var settings = new AuthSettings
+			{
+				ClientId = "{your app client id from credentials.json}",
+				ClientSecret = "{your app client secret from credentials.json}",
+				RefreshToken = "{your user refresh token from token.json}",
+				Scopes = new[] { GmailService.Scope.GmailReadonly }
+			};
+			var credentialProvider = new UserCredentialsProvider(settings);
+
+			return await credentialProvider.FetchAsync();
+		}
+
+		private static UserCredential CreateTokenUsingRawApi()
 		{
 			var scopes = new[] { GmailService.Scope.GmailReadonly };
 			UserCredential credential;
@@ -44,40 +58,21 @@ namespace GoogleApi.Console
 			return credential;
 		}
 
-		private static void CallGmail(UserCredential credential)
+		private static string ExtractEmailContentUsingWrapperApi(UserCredential credential)
 		{
-			// Create Gmail API service.
-			var service = new GmailService(new BaseClientService.Initializer()
-			{
-				HttpClientInitializer = credential,
-				ApplicationName = "Trading App",
-			});
+			var gmailService = new GmailServiceWrapper("{your app name}", credential);
 
-			// Define parameters of request.
+			var request = new GmailRequestBuilder()
+				.UseFrom("{from email address}")
+				.UseSubject("{email subject}")
+				.UseLabel("{email label/category}")
+				.UseNewerThan(DateTime.Now.AddMinutes(-10))
+				.UseSnippetRegex(new Regex(".*"))
+				.Request;
 
-			UsersResource.MessagesResource.ListRequest request = service.Users.Messages.List("me");
-			request.Q = "from:(bt-trade@btcapitalpartners.ro) subject:(Cod de autentificare) in:\"BT Capital Auth\" newer_than:1d";
+			var content = gmailService.ExtractEmailSnippetContent(request);
 
-			var response = request.Execute();
-
-			var messages = new List<Message>();
-			foreach (var message in response.Messages)
-			{
-				UsersResource.MessagesResource.GetRequest msgRequest = service.Users.Messages.Get("me", message.Id);
-				messages.Add(msgRequest.Execute());
-			}
-
-			var authDateTime = DateTime.Parse("Mon, 9 Dec 2019 20:37:31 +0200");
-			var authMessage = messages
-				.Where(m => DateTime.Parse(m.Payload.Headers.FirstOrDefault(h => h.Name == "Date").Value) >= authDateTime)
-				.OrderByDescending(m => DateTime.Parse(m.Payload.Headers.FirstOrDefault(h => h.Name == "Date").Value))
-				.FirstOrDefault();
-
-			var codeRegex = new Regex("Codul de autentificare generat este: \\d{2}-(?<code>\\d{5})");
-
-			var code = codeRegex.Matches(authMessage.Snippet)[0].Groups["code"].Value;
-
-			System.Console.Read();
+			return content;
 		}
 	}
 }

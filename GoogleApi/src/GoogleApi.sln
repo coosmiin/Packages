@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GoogleApi.Console", "Google
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GmailApi.Client", "GmailApi.Client\GmailApi.Client.csproj", "{6CBF3DF0-9C9B-45B8-ACF3-3AB911A529C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GmailApi.Client.Tests", "GmailApi.Client.Tests\GmailApi.Client.Tests.csproj", "{ADEFCAD1-F4FF-4A6D-99AD-74D18E734AE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6CBF3DF0-9C9B-45B8-ACF3-3AB911A529C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6CBF3DF0-9C9B-45B8-ACF3-3AB911A529C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6CBF3DF0-9C9B-45B8-ACF3-3AB911A529C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADEFCAD1-F4FF-4A6D-99AD-74D18E734AE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADEFCAD1-F4FF-4A6D-99AD-74D18E734AE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADEFCAD1-F4FF-4A6D-99AD-74D18E734AE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADEFCAD1-F4FF-4A6D-99AD-74D18E734AE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

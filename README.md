@@ -4,7 +4,7 @@
 
 ### GmailApi.Client
 
-It wrapps [Google.Apis.Gmail](https://developers.google.com/api-client-library/dotnet/apis/gmail/v1) in the attempt to simplify server side authorization over Gmail. 
+It wrapps [Google.Apis.Gmail](https://developers.google.com/api-client-library/dotnet/apis/gmail/v1) in the attempt to simplify server side authorization over Gmail.
 
 **Security Notice**: Take note that by using this package the automatic authorization step (that opens a new window and asks for `Google` account credentials) is replaced by a manual step done apriori of using this package. Extra care is needed in keeping the autorization assets safe (`credentials.json` and `token.json`).
 
@@ -30,4 +30,20 @@ var settings = new AuthSettings
 var credentialProvider = new UserCredentialsProvider(settings);
 
 var userCredential = await credentialProvider.FetchAsync();
+```
+
+#### Usage - Extract email snippet content
+
+```csharp
+var gmailService = new GmailServiceWrapper("{your app name}", credential);
+
+var request = new GmailRequestBuilder()
+    .UseFrom("{from email address}")
+    .UseSubject("{email subject}")
+    .UseLabel("{email label/category}")
+    .UseNewerThan(DateTime.Now.AddMinutes(-10))
+    .UseSnippetRegex(new Regex(".*"))
+    .Request;
+
+var content = gmailService.ExtractEmailSnippetContent(request);
 ```
