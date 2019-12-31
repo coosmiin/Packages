@@ -3,9 +3,10 @@
 ################################################################################
 
 **/src/.vs
-**/src/*/obj
-**/src/*/bin
+**/src/**/obj
+**/src/**/bin
 **/src/packages
 **/src/*/*.log
 **/src/*/Properties
 **/src/*/*.json
+**/src/**/*.*.user
