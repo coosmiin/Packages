@@ -44,6 +44,9 @@ namespace GmailApi.Client.Gmail
 				.OrderByDescending(m => DateTime.Parse(m.Payload.Headers.FirstOrDefault(h => h.Name == "Date").Value))
 				.FirstOrDefault();
 
+			if (authMessage == null)
+				return null;
+
 			var matches = request.SnippetRegex.Matches(authMessage.Snippet);
 
 			if (matches.Any() && matches[0].Groups.Count > 1)
