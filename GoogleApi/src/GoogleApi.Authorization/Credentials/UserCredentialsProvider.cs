@@ -1,9 +1,9 @@
-﻿using GmailApi.Client.GoogleApi;
-using Google.Apis.Auth.OAuth2;
+﻿using Google.Apis.Auth.OAuth2;
+using GoogleApi.Authorization.Stores;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GmailApi.Client.Authorization
+namespace GoogleApi.Authorization.Credentials
 {
 	public class UserCredentialsProvider : IUserCredentialsProvider
 	{
