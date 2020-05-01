@@ -19,4 +19,5 @@ jobs:
       - name: dotnet restore
         run: dotnet restore
       - name: build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build GoogleApi/src/GoogleApi.Authorization/GoogleApi.Authorization.csproj --configuration Release --no-restore
+        
