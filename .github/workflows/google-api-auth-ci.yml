@@ -17,7 +17,6 @@ jobs:
         with:
           dotnet-version: 3.1.201
       - name: dotnet restore
-        run: dotnet restore
+        run: dotnet restore GoogleApi/src/GoogleApi.Authorization/GoogleApi.Authorization.csproj
       - name: build
         run: dotnet build GoogleApi/src/GoogleApi.Authorization/GoogleApi.Authorization.csproj --configuration Release --no-restore
-        
