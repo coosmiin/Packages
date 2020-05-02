@@ -23,5 +23,5 @@ jobs:
       - name: build
         run: dotnet build GoogleApi/src/GmailApi.Client/GmailApi.Client.csproj --configuration Release --no-restore
       - name: test
-        run: dotnet test GoogleApi/src/GmailApi.Client/GmailApi.Client.Tests.csproj --no-restore --verbosity normal
+        run: dotnet test GoogleApi/src/GmailApi.Client.Tests/GmailApi.Client.Tests.csproj --no-restore --verbosity normal
 
