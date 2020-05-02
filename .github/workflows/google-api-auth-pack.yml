@@ -23,6 +23,5 @@ jobs:
         run: |  
           cd GoogleApi/src/GoogleApi.Authorization
           dotnet pack -c Release -o out  
-
-      - name: Push generated package to GitHub registry
+      - name: push Nuget
         run: dotnet nuget push ./GoogleApi/src/GoogleApi.Authorization/out/*.nupkg --skip-duplicate --no-symbols true
