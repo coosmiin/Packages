@@ -4,18 +4,15 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>coosmiin</Authors>
     <Description>Wrapper of Google.Apis.Gmail to simplify authentication and gmail data retrival</Description>
-    <Version>1.0.1</Version>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
-    <FileVersion>1.0.1.0</FileVersion>
-    <RepositoryUrl>https://github.com/coosmiin/Packages/tree/master/GoogleApi/</RepositoryUrl>
+    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
+    <RepositoryUrl>https://github.com/coosmiin/Packages/</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Google.Apis.Gmail.v1" Version="1.42.0.1777" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\GoogleApi.Authorization\GoogleApi.Authorization.csproj" />
+    <PackageReference Include="GoogleApi.Authorization" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
