@@ -2,7 +2,7 @@ name: GoogleApi.Authorization pack & publish
 
 on: 
   pull_request:
-    # types: [closed]
+    types: [closed]
     branches:
       - master
     paths:
