@@ -9,7 +9,7 @@ on:
       - 'GoogleApi/src/GoogleApi.Authorization/**'
 
 jobs:
-  build:
+  pack & push:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
