@@ -1,8 +1,8 @@
-﻿using GmailApi.Client.Authorization;
-using GmailApi.Client.Gmail;
+﻿using GmailApi.Client.Gmail;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Gmail.v1;
 using Google.Apis.Util.Store;
+using GoogleApi.Authorization.Credentials;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
