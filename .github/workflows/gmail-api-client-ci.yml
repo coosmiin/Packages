@@ -8,12 +8,16 @@ on:
       - 'GoogleApi/src/GmailApi.Client/**'
 
 jobs:
-  build:
+  build_and_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: setup .NET
         uses: actions/setup-dotnet@v1
+        with:
+          source-url: https://nuget.pkg.github.com/coosmiin/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}        
       - name: dotnet restore
         run: dotnet restore GoogleApi/src/GmailApi.Client/GmailApi.Client.csproj
       - name: build
