@@ -9,7 +9,7 @@ namespace GmailApi.Client.Gmail
 		private string _from;
 		private string _subject;
 		private string _label;
-		private DateTime _newerThan;
+		private DateTimeOffset _newerThan;
 		private Regex _contentRegex;
 
 		public GmailRequest Request
@@ -47,7 +47,7 @@ namespace GmailApi.Client.Gmail
 			return this;
 		}
 
-		public GmailRequestBuilder UseNewerThan(DateTime date)
+		public GmailRequestBuilder UseNewerThan(DateTimeOffset date)
 		{
 			_newerThan = date;
 			return this;
