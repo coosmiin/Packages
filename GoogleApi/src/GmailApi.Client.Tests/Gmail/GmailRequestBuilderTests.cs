@@ -40,7 +40,7 @@ namespace GmailApi.Client.Tests.Gmail
 		[Test]
 		public void UseNewerThan_NewerThanInRequest()
 		{
-			var newerThan = DateTime.Now.AddDays(-1).AddMinutes(-10);
+			var newerThan = DateTimeOffset.Now.AddDays(-1).AddMinutes(-10);
 
 			var request = new GmailRequestBuilder()
 				.UseNewerThan(newerThan)
@@ -53,7 +53,7 @@ namespace GmailApi.Client.Tests.Gmail
 		public void UseNewerThan_MoreThanOneDay_CorrectDaysInQuery()
 		{
 			var request = new GmailRequestBuilder()
-				.UseNewerThan(DateTime.Now.AddDays(-1).AddMinutes(-10))
+				.UseNewerThan(DateTimeOffset.Now.AddDays(-1).AddMinutes(-10))
 				.Request;
 
 			Assert.IsTrue(request.Query.Contains("newer_than:2d"));
@@ -63,7 +63,7 @@ namespace GmailApi.Client.Tests.Gmail
 		public void UseNewerThan_LessThanOneDay_CorrectDaysInQuery()
 		{
 			var request = new GmailRequestBuilder()
-				.UseNewerThan(DateTime.Now.AddDays(-1).AddMinutes(10))
+				.UseNewerThan(DateTimeOffset.Now.AddDays(-1).AddMinutes(10))
 				.Request;
 
 			Assert.IsTrue(request.Query.Contains("newer_than:1d"));

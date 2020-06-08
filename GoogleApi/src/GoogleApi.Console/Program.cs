@@ -16,9 +16,10 @@ namespace GoogleApi.Console
 		static async Task Main(string[] args)
 		{
 			var credential = CreateTokenUsingRawApi();
-			// var credential = await CreateTokenUsingCredentialProvider();
+			//var credential = await CreateTokenUsingCredentialProvider();
 
-			// var content = ExtractEmailContentUsingWrapperApi(credential);
+			var content = ExtractEmailContentUsingWrapperApi(credential);
+			System.Console.WriteLine(content);
 		}
 
 		private static async Task<UserCredential> CreateTokenUsingCredentialProvider()
@@ -66,7 +67,7 @@ namespace GoogleApi.Console
 				.UseFrom("{from email address}")
 				.UseSubject("{email subject}")
 				.UseLabel("{email label/category}")
-				.UseNewerThan(DateTime.Now.AddMinutes(-10))
+				.UseNewerThan(DateTimeOffset.Now.AddMinutes(-10))
 				.UseSnippetRegex(new Regex(".*"))
 				.Request;
 

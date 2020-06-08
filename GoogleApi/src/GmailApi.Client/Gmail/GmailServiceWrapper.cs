@@ -40,8 +40,8 @@ namespace GmailApi.Client.Gmail
 			}
 
 			var authMessage = messages
-				.Where(m => DateTime.Parse(m.Payload.Headers.FirstOrDefault(h => h.Name == "Date").Value) >= request.NewerThan)
-				.OrderByDescending(m => DateTime.Parse(m.Payload.Headers.FirstOrDefault(h => h.Name == "Date").Value))
+				.Where(m => m.InternalDate >= request.NewerThan.ToUnixTimeMilliseconds())
+				.OrderByDescending(m => m.InternalDate)
 				.FirstOrDefault();
 
 			if (authMessage == null)
