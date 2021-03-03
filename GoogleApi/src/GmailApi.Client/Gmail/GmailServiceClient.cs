@@ -8,11 +8,11 @@ using Google.Apis.Services;
 
 namespace GmailApi.Client.Gmail
 {
-	public class GmailServiceWrapper : IGmailServiceWrapper
+	public class GmailServiceClient : IGmailServiceClient
 	{
 		private readonly GmailService _gmailService;
 
-		public GmailServiceWrapper(string appName, IConfigurableHttpClientInitializer clientInitializer)
+		public GmailServiceClient(string appName, IConfigurableHttpClientInitializer clientInitializer)
 		{
 			_gmailService = new GmailService(
 				new BaseClientService.Initializer
@@ -22,7 +22,7 @@ namespace GmailApi.Client.Gmail
 				});
 		}
 
-		public string ExtractEmailSnippetContent(GmailRequest request)
+		public string? ExtractEmailSnippetContent(GmailRequest request)
 		{
 			UsersResource.MessagesResource.ListRequest listRequest = _gmailService.Users.Messages.List("me");
 			listRequest.Q = request.Query;
@@ -39,14 +39,17 @@ namespace GmailApi.Client.Gmail
 				messages.Add(msgRequest.Execute());
 			}
 
-			var authMessage = messages
-				.Where(m => m.InternalDate >= request.NewerThan.ToUnixTimeMilliseconds())
+			var authMessage = messages	
+				.Where(m => m.InternalDate >= request.NewerThan?.ToUnixTimeMilliseconds())
 				.OrderByDescending(m => m.InternalDate)
 				.FirstOrDefault();
 
 			if (authMessage == null)
 				return null;
 
+			if (request.SnippetRegex == null)
+				return null;
+				
 			var matches = request.SnippetRegex.Matches(authMessage.Snippet);
 
 			if (matches.Any() && matches[0].Groups.Count > 1)
