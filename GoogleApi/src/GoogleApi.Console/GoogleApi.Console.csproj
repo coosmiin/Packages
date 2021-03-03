@@ -2,15 +2,19 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net5.0</TargetFramework>
+		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Google.Apis.Gmail.v1" Version="1.46.0.1950" />
+		<PackageReference Include="Google.Apis.Gmail.v1" Version="1.49.0.2167" />
+		<PackageReference Include="Google.Apis.Sheets.v4" Version="1.45.0.1930" />
+	    <PackageReference Include="GoogleApi.Authorization" Version="1.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\GmailApi.Client\GmailApi.Client.csproj" />
+	  <ProjectReference Include="..\SheetsApi.Client\SheetsApi.Client.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
