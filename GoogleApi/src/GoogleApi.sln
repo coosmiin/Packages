@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GmailApi.Client.Tests", "Gm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleApi.Authorization", "GoogleApi.Authorization\GoogleApi.Authorization.csproj", "{D15A7ABC-0C4B-44E4-B01A-491B98A39245}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SheetsApi.Client", "SheetsApi.Client\SheetsApi.Client.csproj", "{041E0062-3BD4-4B2C-BBF3-6E89DF286135}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D15A7ABC-0C4B-44E4-B01A-491B98A39245}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D15A7ABC-0C4B-44E4-B01A-491B98A39245}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D15A7ABC-0C4B-44E4-B01A-491B98A39245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{041E0062-3BD4-4B2C-BBF3-6E89DF286135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{041E0062-3BD4-4B2C-BBF3-6E89DF286135}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{041E0062-3BD4-4B2C-BBF3-6E89DF286135}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{041E0062-3BD4-4B2C-BBF3-6E89DF286135}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
