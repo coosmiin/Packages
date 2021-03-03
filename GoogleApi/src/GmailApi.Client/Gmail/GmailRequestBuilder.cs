@@ -6,11 +6,11 @@ namespace GmailApi.Client.Gmail
 {
 	public class GmailRequestBuilder
 	{
-		private string _from;
-		private string _subject;
-		private string _label;
-		private DateTimeOffset _newerThan;
-		private Regex _contentRegex;
+		private string? _from;
+		private string? _subject;
+		private string? _label;
+		private DateTimeOffset? _newerThan;
+		private Regex? _contentRegex;
 
 		public GmailRequest Request
 		{
@@ -22,10 +22,13 @@ namespace GmailApi.Client.Gmail
 				queryBuilder.AppendSearchTerm("subject", _subject);
 				queryBuilder.AppendSearchTerm("in", _label);
 
-				var newerThanDays = (DateTime.Now - _newerThan).Days;
-				queryBuilder.AppendSearchTerm("newer_than", $"{newerThanDays + 1}d", quotedValue: false);
-
-				return new GmailRequest { Query = queryBuilder.ToString(), NewerThan = _newerThan, SnippetRegex = _contentRegex };
+				if (_newerThan.HasValue)
+				{
+					var newerThanDays = (DateTime.Now - _newerThan.Value).Days;
+					queryBuilder.AppendSearchTerm("newer_than", $"{newerThanDays + 1}d", quotedValue: false);
+				}
+				
+				return new GmailRequest(queryBuilder.ToString(), _newerThan, _contentRegex);
 			}
 		}
 
@@ -62,8 +65,14 @@ namespace GmailApi.Client.Gmail
 
 	public static class StringBuilderExtentions
 	{
-		public static StringBuilder AppendSearchTerm(this StringBuilder builder, string term, string value, bool quotedValue = true)
+		public static StringBuilder AppendSearchTerm(this StringBuilder builder, 
+			string term, 
+			string? value,
+			bool quotedValue = true)
 		{
+			if (string.IsNullOrEmpty(value))
+				return builder;
+
 			string spacing = builder.Length == 0 ? string.Empty : " ";
 			string quote = quotedValue ? "\"" : string.Empty;
 			return builder.Append($"{spacing}{term}:{quote}{value}{quote}");
